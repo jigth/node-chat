@@ -1,0 +1,10 @@
+$mediumSizeBox : 800px;
+$bgMediumBox : indigo;
+
+div {
+    width: $mediumSizeBox;
+    height: $mediumSizeBox;
+    background: $bgMediumBox;
+    color: white;
+    font-weight: 700;
+}
