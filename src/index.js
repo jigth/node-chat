@@ -1,22 +1,18 @@
-import { importMe } from './import-me.js'; 
-
-importMe()
-
-// Fastify hello world example!
+// Require the framework and instantiate it
 const fastify = require('fastify')({
   logger: true
 })
 
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
+// Declare a route
+fastify.get('/', function (request, reply) {
+  reply.send({ hello: 'world' })
 })
 
-const start = async () => {
-  try {
-    await fastify.listen(3000)
-  } catch (err) {
+// Run the server!
+fastify.listen(3000, function (err, address) {
+  if (err) {
     fastify.log.error(err)
     process.exit(1)
   }
-}
-start()
+  fastify.log.info(`server listening on ${address}`)
+})
